@@ -1,0 +1,66 @@
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Build directories
+dist/
+build/
+out/
+coverage/
+
+# OS-specific files
+.DS_Store      # macOS
+Thumbs.db      # Windows
+desktop.ini    # Windows
+
+# IDE/Editor-specific files
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Python-specific files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Environment variables
+.env
+config.env
+data/.env
+.env.local
+
+# Generated code or build artifacts
+*.class
+*.war
+*.jar
+*.dll
+*.exe
+*.out
+*.app
+*.o
+*.so
+
+# Ignore package-lock and yarn.lock (optional, if managed manually)
+# package-lock.json
+# yarn.lock
+
+# Temporary files or cache
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.old
+*.orig
