@@ -1,6 +1,7 @@
 import express from 'express';
 import { config } from 'dotenv';
 import { errorMiddleware } from './middlewares/error.js';
+import userRouter from './routes/user.js';
 import cors from 'cors';
 
 export const app = express();
@@ -24,6 +25,7 @@ app.use(
 );
 
 
+app.use('/api/v1/users', userRouter);
 
 app.get('/', (req, res) => {
   res.send('Server is working');
