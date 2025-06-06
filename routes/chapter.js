@@ -3,6 +3,7 @@ import {
   uploadChapters,
   getAllChapters,
   getChapterById,
+  clearChapterCache,
 } from '../controllers/chapter.js';
 import { isAuthenticated } from '../middlewares/auth.js';
 import { upload } from '../middlewares/upload.js';
@@ -15,5 +16,6 @@ router
   .get(getAllChapters);
 
 router.route('/:id').get(getChapterById);
+router.post('/clear-cache', isAuthenticated, clearChapterCache);
 
 export default router;

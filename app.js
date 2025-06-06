@@ -6,15 +6,14 @@ import chapterRouter from './routes/chapter.js';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
+config({
+  path: './.env',
+});
 export const app = express();
 export const backendUrl =
   process.env.NODE_ENV === 'development'
     ? process.env.LOCAL_BACKEND_URL
     : process.env.BACKEND_URL;
-
-config({
-  path: './.env',
-});
 
 app.use(express.json());
 app.use(cookieParser());

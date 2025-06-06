@@ -10,6 +10,7 @@ export const connectDB = () => {
       dbName: 'StudyTrack',
     })
     .then((c) => {
+      console.log(process.env.NODE_ENV, 'Environment');
       console.log(`Database Connected with ${c.connection.host}`);
     })
     .catch((err) => {
