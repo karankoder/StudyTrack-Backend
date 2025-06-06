@@ -14,6 +14,26 @@
 
 [https://studytrack-backend.onrender.com](https://studytrack-backend.onrender.com)
 
+## User Roles
+
+Each user has a role assigned for access control:
+
+- By default, users are assigned the `user` role.
+- To grant admin access, manually update the user's role in the database to `admin`.
+
+## Admin Testing
+
+For testing admin-specific endpoints (such as chapter uploads), a sample admin user has been created:
+
+```
+{
+  "name": "admin",
+  "email": "admin@gmail.com"
+}
+```
+
+You can log in with this user to test features restricted to admins.
+
 ---
 
 **Note:**
