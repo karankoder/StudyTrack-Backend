@@ -7,8 +7,11 @@ import {
 } from '../controllers/user.js';
 import { isAuthenticated } from '../middlewares/auth.js';
 import { cookieRefresher } from '../utils/features.js';
+import rateLimiter from '../middlewares/rateLimiter.js';
 
 const router = express.Router();
+
+router.use(rateLimiter);
 
 router.post('/register', createNewUser);
 router.post('/login', userLogin);

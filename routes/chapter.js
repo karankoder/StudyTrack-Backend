@@ -8,8 +8,11 @@ import {
 import { isAuthenticated } from '../middlewares/auth.js';
 import { upload } from '../middlewares/upload.js';
 import { cookieRefresher } from '../utils/features.js';
+import rateLimiter from '../middlewares/rateLimiter.js';
 
 const router = express.Router();
+
+router.use(rateLimiter);
 
 router
   .route('/')

@@ -4,7 +4,7 @@ import redis from '../config/redis.js';
 import {
   generateCacheKey,
   invalidateChapterCache,
-} from '../utils/chapterCacheUtils.js';
+} from '../utils/chapterCache.js';
 
 export const uploadChapters = async (req, res, next) => {
   try {
