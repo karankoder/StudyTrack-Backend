@@ -9,11 +9,8 @@ import cors from 'cors';
 config({
   path: './.env',
 });
+
 export const app = express();
-export const backendUrl =
-  process.env.NODE_ENV === 'development'
-    ? process.env.LOCAL_BACKEND_URL
-    : process.env.BACKEND_URL;
 
 app.use(express.json());
 app.use(cookieParser());
@@ -28,12 +25,12 @@ app.use(
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/chapters', chapterRouter);
 
-app.get('/', (req, res) => {
-  res.send('Server is working');
+app.get('/ping', (req, res) => {
+  res.send('Pong!');
 });
 
 app.get('/failure', (req, res) => {
-  res.send('Failed to Login');
+  res.send('Oops! Something went wrong');
 });
 
 app.use(errorMiddleware);
