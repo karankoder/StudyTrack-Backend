@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "12d0f689-e06e-4844-b2da-149390ddc3c9",
+		"name": "StudyTrack",
+		"description": "This API powers a Chapter Performance Dashboard that includes authentication, user role management, and chapter upload functionalities. The platform is designed for both regular users and admins.EndFragment\n\n### Authentication\n\nAuthentication is handled using:\n\n- **JWT (JSON Web Token)** stored in **HTTP-only cookies**.\n    \n- Upon successful login or registration, the server issues a JWT which is stored securely in a cookie.\n    \n- This token is used to authorize protected routes on the server.\n    \n\n### User Roles\n\nEach user has a `role` assigned for access control:\n\n- By default, users are assigned the `user` role.\n    \n- To grant admin access, manually update the user's `role` in the database to `admin`.\n    \n\n### Admin Testing\n\nFor testing admin-specific endpoints (such as **chapter uploads**), a sample admin user has been created:\n\n``` json\n{\n  \"name\": \"admin\",\n  \"email\": \"admin@gmail.com\"\n}\n\n ```\n\nYou can log in with this user to test features restricted to admins.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34219693",
+		"_collection_link": "https://www.postman.com/karankoder/workspace/kkd-s-space/collection/34219693-12d0f689-e06e-4844-b2da-149390ddc3c9?action=share&source=collection_link&creator=34219693"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\":\"admin\",\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"random1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/users/register",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"admin@gmail.com\",\r\n  \"password\": \"random1234\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/users/login",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"users",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload Chapters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"description": "1",
+							"type": "file",
+							"src": "postman-cloud:///1f0424ae-a22f-4ce0-ad19-f413cd5d2c16"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "postman-cloud:///1f0424be-2b3f-43f0-a3f4-521dc81e38ad",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/chapters",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chapters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Chapters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/chapters",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chapters"
+					],
+					"query": [
+						{
+							"key": "class",
+							"value": "Class 11",
+							"disabled": true
+						},
+						{
+							"key": "weakChapters",
+							"value": "true",
+							"disabled": true
+						},
+						{
+							"key": "status",
+							"value": "Completed",
+							"disabled": true
+						},
+						{
+							"key": "limit",
+							"value": "50",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chapters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/chapters/:id",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"chapters",
+						":id"
+					],
+					"query": [
+						{
+							"key": "class",
+							"value": "Class 11",
+							"disabled": true
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "68432dc57d4fb29e0bc50d30"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rate Limit Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/rate-limit/status",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rate-limit",
+						"status"
+					],
+					"query": [
+						{
+							"key": "class",
+							"value": "Class 11",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Rate Limited IPs",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/rate-limit/ips",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rate-limit",
+						"ips"
+					],
+					"query": [
+						{
+							"key": "class",
+							"value": "Class 11",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear Rate Limit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"ip\": \"10.210.60.218\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://studytrack-backend.onrender.com/api/v1/rate-limit/clear",
+					"protocol": "https",
+					"host": [
+						"studytrack-backend",
+						"onrender",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"rate-limit",
+						"clear"
+					],
+					"query": [
+						{
+							"key": "class",
+							"value": "Class 11",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
